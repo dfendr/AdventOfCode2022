@@ -2,7 +2,6 @@ use std::fs::File;
 use std::io;
 use std::io::prelude::*;
 
-
 // https://adventofcode.com/2022/day/1
 
 fn main() {
@@ -48,4 +47,3 @@ fn read_file_to_string(filename: &str) -> Result<String, io::Error> {
     File::open(filename)?.read_to_string(&mut s)?;
     Ok(s)
 }
-
