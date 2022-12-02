@@ -37,6 +37,7 @@ impl Value for RPS {
 }
 
 impl Beats for RPS {
+    /// Returns RPS type that is defeated by caller
     fn beats(&self) -> Self {
         match self {
             RPS::Rock => RPS::Scissors,
@@ -47,6 +48,7 @@ impl Beats for RPS {
 }
 
 impl Ties for RPS {
+    /// Returns RPS type that ties with caller
     fn ties(&self) -> Self {
         match self {
             RPS::Rock => RPS::Rock,
@@ -57,6 +59,7 @@ impl Ties for RPS {
 }
 
 impl Loses for RPS {
+    /// Returns RPS type that defeats caller
     fn loses(&self) -> Self {
         match self {
             RPS::Rock => RPS::Paper,
@@ -72,9 +75,15 @@ fn main() {
     question_2(&s);
 }
 
-fn question_1(s: &str) {
+fn read_file_to_string(filename: &str) -> Result<String, io::Error> {
+    let mut s = String::new();
+    File::open(filename)?.read_to_string(&mut s)?;
+    Ok(s)
+}
+
+fn question_1(input: &str) {
     let mut total: i32 = 0;
-    for line in s.lines() {
+    for line in input.lines() {
         let round = line.split(' ').collect::<Vec<&str>>();
         let (opp_hand, player_hand) = (parse_move(round[0]), parse_move(round[1]));
         total += calc_score(&player_hand, &opp_hand) as i32;
@@ -82,9 +91,9 @@ fn question_1(s: &str) {
     println!("W/o Strategy:  {}", total);
 }
 
-fn question_2(s: &str) {
+fn question_2(input: &str) {
     let mut total: i32 = 0;
-    for line in s.lines() {
+    for line in input.lines() {
         let round = line.split(' ').collect::<Vec<&str>>();
         let opp_hand = parse_move(round[0]);
         let player_hand = get_strategic_move(&opp_hand, round[1]);
@@ -93,19 +102,12 @@ fn question_2(s: &str) {
     println!("With Strategy: {}", total);
 }
 
-fn read_file_to_string(filename: &str) -> Result<String, io::Error> {
-    let mut s = String::new();
-    File::open(filename)?.read_to_string(&mut s)?;
-    Ok(s)
-}
-
 fn calc_score(p1: &RPS, p2: &RPS) -> u8 {
     let mut total_score = p1.value();
     if *p2 == p1.beats() {
         total_score += 6;
     } else if p2 == p1 {
         total_score += 3;
-    } else {
     }
     total_score
 }
