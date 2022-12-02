@@ -1,3 +1,5 @@
+# https://adventofcode.com/2022/day/1
+
 function update_list(n){
     min = ar[0];
     min_pos = 0;

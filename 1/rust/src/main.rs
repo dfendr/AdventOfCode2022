@@ -2,14 +2,16 @@ use std::fs::File;
 use std::io;
 use std::io::prelude::*;
 
+
+// https://adventofcode.com/2022/day/1
+
 fn main() {
-    question_1();
-    question_2();
+    let s = read_file_to_string("input").unwrap();
+    question_1(&s);
+    question_2(&s);
 }
 
-fn question_1() {
-    // Open the path in read-only mode, returns `io::Result<File>`
-    let s = read_file_to_string("input").unwrap();
+fn question_1(s: &str) {
     let mut count = 0;
     let mut max = 0;
     for line in s.lines() {
@@ -26,8 +28,7 @@ fn question_1() {
     println!("Highest Calories: {max}")
 }
 
-fn question_2() {
-    let s = read_file_to_string("input").expect("No such file or directory");
+fn question_2(s: &str) {
     let mut elves: Vec<i32> = vec![];
     let mut total = 0;
     for line in s.lines() {
@@ -47,3 +48,4 @@ fn read_file_to_string(filename: &str) -> Result<String, io::Error> {
     File::open(filename)?.read_to_string(&mut s)?;
     Ok(s)
 }
+

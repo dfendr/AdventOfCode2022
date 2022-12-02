@@ -1,3 +1,5 @@
+
+# https://adventofcode.com/2022/day/1
 #Run with: gawk -f cals.awk input
 
 # Each group of numbers is one elf
