@@ -8,12 +8,10 @@ sub read_input {
     my @input_arr;
     open( my $infile, "<", "$filename" )
       or die "Cannot open file: No such file or directory\n";
-
     while ( my $line = <$infile> ) {
         chomp($line);
         push( @input_arr, $line );
     }
-
     close $infile;
     return @input_arr;
 }
@@ -78,13 +76,8 @@ sub question_2 {
         $total += get_value( $isect[0] );
     }
     say $total;
-
 }
 
-sub main {
-    my @input_arr = read_input("input");
-    question_1( \@input_arr );
-    question_2( \@input_arr );
-}
-
-main()
+my @input_arr = read_input("input");
+question_1( \@input_arr );
+question_2( \@input_arr );
