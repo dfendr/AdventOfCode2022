@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+# How to run:
+# $perl 3.pl
 use strict;
 use warnings;
 use feature "say";

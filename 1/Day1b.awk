@@ -1,3 +1,7 @@
+# https://adventofcode.com/2022/day/1
+# How to run:
+#$gawk -f Day1b.awk input
+
 BEGIN{curr_sum = 0;i = 0;}
 {
     if ($0 == ""){

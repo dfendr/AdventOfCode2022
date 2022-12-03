@@ -1,6 +1,6 @@
-
 # https://adventofcode.com/2022/day/1
-#Run with: gawk -f cals.awk input
+# How to run:
+# $gawk -f Day1a.awk input
 
 # Each group of numbers is one elf
 # next group is separated by newlines, starting a new elf.

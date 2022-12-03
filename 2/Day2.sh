@@ -1,4 +1,7 @@
 #!/bin/bash
+# How to run:
+# $chmod +x Day2.sh
+# $./Day2.sh
 
 # part 1
 total=0
