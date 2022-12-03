@@ -12,17 +12,17 @@ trait Value {
 impl Value for char {
     fn value(&self) -> u8 {
         if self.is_lowercase() {
-            return *self as u8 - 96; // a -> 1
+            return *self as u8 - b'`'; // a -> 1
         } else {
-            return *self as u8 - 38; // A -> 27
+            return *self as u8 - b'&'; // A -> 27
         }
     }
 }
 
-fn main() {
-    let s = read_file_to_string("input").unwrap_or_default();
-    question_1(&s);
-    question_2(&s);
+fn read_file_to_string(filename: &str) -> Result<String, io::Error> {
+    let mut s = String::new();
+    File::open(filename)?.read_to_string(&mut s)?;
+    Ok(s)
 }
 
 fn question_1(s: &String) {
@@ -48,8 +48,9 @@ fn question_2(s: &String) {
     println!("{}", total)
 }
 
-fn read_file_to_string(filename: &str) -> Result<String, io::Error> {
-    let mut s = String::new();
-    File::open(filename)?.read_to_string(&mut s)?;
-    Ok(s)
+
+fn main() {
+    let s = read_file_to_string("input").unwrap_or_default();
+    question_1(&s);
+    question_2(&s);
 }
