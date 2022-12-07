@@ -1,25 +1,19 @@
 #include "stdio.h"
 #include "stdbool.h"
 
-
 bool contains(int start, int end, int n){
-    if ((start <= n) && (end >= n)){
+    if (start <= n && end >= n){
         return true;
         }
-    else {
         return false;
-        }
 }
 
 int main(){
     FILE *fIn = fopen("input", "r");
     int total_a = 0;
     int total_b = 0;
-    char line[50];
-    int linecount = 0;
     int r1a, r1b, r2a, r2b;
-    for (; fgets(line,50, fIn);  linecount+= 1){
-        sscanf(line, "%d-%d,%d-%d", &r1a,&r1b, &r2a, &r2b);
+    while (fscanf(fIn, "%d-%d,%d-%d\n", &r1a, &r1b, &r2a, &r2b) == 4){
         if ((r1a <= r2a) && (r1b >= r2b) || ((r2a <= r1a) && (r2b >= r1b) )){
             total_a += 1;
         }
