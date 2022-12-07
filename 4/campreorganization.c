@@ -12,8 +12,8 @@ int main(){
     FILE *fIn = fopen("input", "r");
     int total_a = 0;
     int total_b = 0;
-    int r1a, r1b, r2a, r2b;
-    while (fscanf(fIn, "%d-%d,%d-%d\n", &r1a, &r1b, &r2a, &r2b) == 4){
+    int r1a = 0, r1b = 0, r2a = 0, r2b = 0;
+    while (fscanf( fIn, "%d-%d,%d-%d\n", &r1a, &r1b, &r2a, &r2b) == 4){
         if ((r1a <= r2a) && (r1b >= r2b) || ((r2a <= r1a) && (r2b >= r1b) )){
             total_a += 1;
         }
