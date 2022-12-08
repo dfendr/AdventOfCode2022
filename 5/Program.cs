@@ -1,21 +1,15 @@
-﻿using System.Text;
+﻿// https://adventofcode.com/2022/day/5
+using System.Text;
 using System.Text.RegularExpressions;
 
-void main(){
-    solve();
-}
-
-void solve()
+void main()
 {
-    // take in file
     string s = File.ReadAllText("./input").ToString();
     string[] split = s.Split("\n\n");
     (string boxes, string moves) = (split[0], split[1]);
-
     List<List<char>> s9001 = CreateStacks(boxes);
     List<List<char>> s9000 = CreateStacks(boxes); // stupid, deep clone isn't in stdlib
     List<int[]> movelist = ParseMoves(moves);
-    // Move stacks
     List<char> holding_stack = new();
     foreach (int[] m in movelist)
     {
