@@ -1,4 +1,5 @@
 #!/bin/bash
+#https://adventofcode.com/2022/day/2
 
 # part 1
 total=0
